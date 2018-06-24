@@ -7,7 +7,7 @@ This is a web app that allows you to keep track of books from a book API.
 To use:
 
 * Open project in code editor or terminal
-* Run in terminal
+* Run the following code:
 ```js
 npm run bns
 ```
