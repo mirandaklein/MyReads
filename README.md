@@ -6,12 +6,12 @@ This is a web app that allows you to keep track of books from a book API.
 
 To use:
 
-*Open project in code editor or terminal
-*Run in terminal
+* Open project in code editor or terminal
+* Run in terminal
 ```js
 npm run bns
 ```
-*Run at http://localhost:3000/
+* Run at http://localhost:3000/
 * Click the drop down menu to choose an option of "Currently Reading", "Want to Read", "Read", or "None"
 * Use the + button to search for books by title or author to add to your library
 
