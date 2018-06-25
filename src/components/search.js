@@ -14,32 +14,29 @@ class Search extends Component{
   }
 updateSearchForBook = async (text) => {
 	try {
-		if(text !== ""){
+	
 		const searchResults = await BooksAPI.search(text);
-		if (searchResults) {
+	
 			const books= searchResults.map((book) => {
 				const searchBook = this.props.books.find((searchBook) => searchBook.id === book.id);
 				const shelf = searchBook ? searchBook.shelf : 'none';
-
+				let tn;
+				if (!book.imageLinks)
+					tn = "https://books.google.com/googlebooks/images/no_cover_thumb.gif"
+				else
+					tn = book.imageLinks.thumbnail
 				return{
 						id: book.id,
             shelf: shelf,
             authors: book.authors,
             title: book.title,
             imageLinks: {
-                  thumbnail: book.imageLinks.thumbnail
+                  thumbnail: tn
 					}
 				};
 			});
 			this.setState({ books });
-		}
 
-		
-		this.setState({
-			query: text.trim(),
-			books: searchResults || []
-		})
-	}
 	} catch (err) {
 		console.log(err);
 		this.setState({
@@ -51,8 +48,6 @@ updateSearchForBook = async (text) => {
 
 }
 	render() {
-      
-const defaultCover = "https://books.google.com/googlebooks/images/no_cover_thumb.gif";
       let showingBooks = [];
       if (this.state.query) {
       	const match = new RegExp(StringRegExp(this.state.query), 'i')

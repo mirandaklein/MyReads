@@ -20,7 +20,7 @@ class Book extends Component {
 
     render () {
         const { title, authors, imageLinks } = this.props;
-        const { thumbnail } = imageLinks;
+        const { thumbnail } = imageLinks || "https://books.google.com/googlebooks/images/no_cover_thumb.gif";
         const { shelf } = this.state;
         return(
             <div className="book">
@@ -32,7 +32,7 @@ class Book extends Component {
                             value={ shelf }
                             onChange={ (event) => this.changeBookShelf(event.target.value) }
                         >
-                            <option value="none" disabled>Move to...</option>
+                            <option value="moveTo" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
